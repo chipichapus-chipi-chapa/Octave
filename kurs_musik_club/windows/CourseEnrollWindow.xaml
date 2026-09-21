@@ -1,0 +1,80 @@
+﻿<Window x:Class="kurs_musik_club.windows.CourseEnrollWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Запись на курс" Height="680" Width="555"
+        WindowStartupLocation="CenterScreen"
+        Background="#121212">
+    <Window.Resources>
+        <!-- Стиль для кнопки регистрации -->
+        <Style x:Key="OctaveRegisterButton" TargetType="Button" BasedOn="{StaticResource MaterialButton}">
+            <Setter Property="Background" Value="#FF5722"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="0.3" Color="#FF5722"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock x:Name="courseName" Foreground="White" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock x:Name="courseDetails" Foreground="White" FontSize="18" Margin="0,0,0,20"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,20,0,0">
+            <TextBlock Text="Выберите дату начала:" 
+                     Foreground="White" 
+                     FontSize="16" 
+                     Margin="0,0,0,10"/>
+            <Calendar x:Name="startDateCalendar" 
+                     Background="#1E1E1E"
+                     BorderBrush="#333333"
+                     Foreground="White"
+                     SelectionMode="SingleDate"
+                     Margin="0,0,0,20"/>
+
+            <TextBlock Text="Выберите время занятий:" 
+                     Foreground="White" 
+                     FontSize="16" 
+                     Margin="0,0,0,10"/>
+            <ComboBox x:Name="timeComboBox" 
+                     Style="{StaticResource OctaveComboBox}"
+                     Margin="0,0,0,20"/>
+
+            <TextBlock Text="Количество занятий в неделю:" 
+                     Foreground="White" 
+                     FontSize="16" 
+                     Margin="0,0,0,10"/>
+            <ComboBox x:Name="lessonsPerWeekComboBox" 
+                     Style="{StaticResource OctaveComboBox}"
+                     Margin="0,0,0,20"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" 
+                    Width="120" 
+                    Height="40" 
+                    Margin="0,20,10,0"
+                    Click="CancelButton_Click"
+                    Style="{StaticResource OctaveRegisterButton}"/>
+            <Button Content="Записаться" 
+                    Width="120" 
+                    Height="40" 
+                    Margin="0,20,0,0"
+                    Click="EnrollButton_Click"
+                    Style="{StaticResource OctaveRegisterButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>

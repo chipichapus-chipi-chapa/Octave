@@ -1,0 +1,83 @@
+<Window x:Class="kurs_musik_club.windows.RentEquipmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Аренда оборудования" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#121212">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF5722"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#F4511E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Доступное оборудование" 
+                   Foreground="White" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"/>
+
+        <DataGrid x:Name="equipmentDataGrid" 
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  Background="#2D2D2D"
+                  BorderBrush="#3D3D3D"
+                  BorderThickness="1"
+                  RowBackground="#2D2D2D"
+                  AlternatingRowBackground="#353535"
+                  Foreground="White"
+                  GridLinesVisibility="Horizontal"
+                  HorizontalGridLinesBrush="#3D3D3D"
+                  VerticalGridLinesBrush="#3D3D3D"
+                  RowHeaderWidth="0"
+                  CanUserResizeRows="False"
+                  CanUserSortColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding equipment_name}" Width="*"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding type_name}" Width="*"/>
+                <DataGridTextColumn Header="Состояние" Binding="{Binding condition_name}" Width="*"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding cost_hour, StringFormat=C}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,20,0,0">
+            <Button Content="Отмена" 
+                    Click="CancelButton_Click"
+                    Style="{StaticResource ButtonStyle}"
+                    Margin="0,0,10,0"/>
+            <Button Content="Забронировать" 
+                    Click="RentEquipment_Click"
+                    Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+</Window> 

@@ -1,0 +1,54 @@
+<Window.Resources>
+    <!-- Стиль для TextBox с placeholder -->
+    <Style x:Key="PlaceholderTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="#1E1E1E"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#333333"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0,0,0,20"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <Grid>
+                                <TextBlock Text="{TemplateBinding Tag}"
+                                         Foreground="#666666"
+                                         Margin="10,0,0,0"
+                                         VerticalAlignment="Center"
+                                         Visibility="{Binding Text.IsEmpty, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                <ScrollViewer x:Name="PART_ContentHost" 
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Window.Resources>
+
+<TextBox x:Name="txtLogin" 
+         Style="{StaticResource PlaceholderTextBoxStyle}"
+         Tag="Логин"
+         Margin="0,0,0,20"/>
+<PasswordBox x:Name="txtPassword" 
+             Background="#1E1E1E"
+             Foreground="White"
+             BorderBrush="#333333"
+             Height="40"
+             Margin="0,0,0,20"/>
+<PasswordBox x:Name="txtConfirmPassword" 
+             Background="#1E1E1E"
+             Foreground="White"
+             BorderBrush="#333333"
+             Height="40"
+             Margin="0,0,0,20"/>
+<TextBox x:Name="txtFio" 
+         Style="{StaticResource PlaceholderTextBoxStyle}"
+         Tag="ФИО"
+         Margin="0,0,0,20"/> 

@@ -1,0 +1,147 @@
+<Window x:Class="kurs_musik_club.windows.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Авторизация" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#121212">
+    <Window.Resources>
+        <Style x:Key="OctaveTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#333333"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="Padding" Value="0,12"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" 
+                             CornerRadius="4" 
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="10,12"/>
+                            <TextBlock Text="{TemplateBinding Tag}" 
+                                Foreground="#9E9E9E"
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                FontSize="{TemplateBinding FontSize}"
+                                Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF5722"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OctaveRegisterButton" TargetType="Button">
+            <Setter Property="Background" Value="#FF5722"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="3" Opacity="0.3" Color="#FF5722"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SocialButton" TargetType="Button">
+            <Setter Property="Background" Value="#1E1E1E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}" 
+                                    CornerRadius="5" 
+                                    BorderBrush="#333333"
+                                    BorderThickness="1"/>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,0">
+            <Image Source="/img/octave-logo.png" Width="150" Margin="0,0,0,30" HorizontalAlignment="Center"/>
+            
+            <TextBlock Text="Авторизация" 
+                     Foreground="White" 
+                     FontSize="28" 
+                     FontWeight="Bold"
+                     HorizontalAlignment="Center"
+                     Margin="0,0,0,30"/>
+
+            <TextBox x:Name="loginTextBox" 
+                     Style="{StaticResource OctaveTextBox}"
+                     Tag="Логин"
+                     Margin="0,0,0,20"/>
+
+            <PasswordBox x:Name="passwordBox" 
+                        Style="{StaticResource OctaveTextBox}"
+                        Tag="Пароль"
+                        Margin="0,0,0,20"/>
+
+            <Button Content="Войти" 
+                    Style="{StaticResource OctaveRegisterButton}"
+                    Click="LoginButton_Click"/>
+
+            <TextBlock Text="Или войдите через социальные сети" 
+                     Foreground="#9E9E9E" 
+                     FontSize="14"
+                     HorizontalAlignment="Center"
+                     Margin="0,30,0,20"/>
+
+            <Button Content="Войти через ВКонтакте" 
+                    Style="{StaticResource SocialButton}"
+                    Click="VKLogin_Click">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4C75A3" Offset="0"/>
+                        <GradientStop Color="#2B5876" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            
+            <Button Content="Войти через Google" 
+                    Style="{StaticResource SocialButton}"
+                    Click="GoogleLogin_Click">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#4285F4" Offset="0"/>
+                        <GradientStop Color="#34A853" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <TextBlock Text="Нет аккаунта? Зарегистрируйтесь" 
+                     Foreground="#9E9E9E" 
+                     FontSize="14"
+                     HorizontalAlignment="Center"
+                     Margin="0,30,0,0"
+                     MouseDown="RegisterText_MouseDown"/>
+        </StackPanel>
+    </Grid>
+</Window> 

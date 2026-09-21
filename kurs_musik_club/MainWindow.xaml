@@ -1,0 +1,16 @@
+﻿<Window x:Class="kurs_musik_club.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurs_musik_club"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="Black">
+        <Label Content="Octave" HorizontalAlignment="Left" Height="99" Margin="276,71,0,0" VerticalAlignment="Top" Width="226" FontFamily="Old English Text MT" FontSize="72" Foreground="White"/>
+        <Button x:Name="sign_in_btn" Content="ВХОД" HorizontalAlignment="Left" Height="43" Margin="260,0,0,0" VerticalAlignment="Center" Width="258" Foreground="#FFFFFEFE" Background="Black" BorderBrush="#FFE6E6E6" FontWeight="Bold" FontFamily="Yu Gothic UI" Click="sign_in_btn_Click"/>
+        <Button x:Name="registration_btn" Content="РЕГИСТРАЦИЯ" HorizontalAlignment="Left" Height="43" Margin="260,270,0,0" VerticalAlignment="Top" Width="258" Foreground="#FFFFFEFE" Background="Black" BorderBrush="#FFE6E6E6" FontWeight="Bold" FontFamily="Yu Gothic UI" Click="registration_btn_Click"/>
+        <Label x:Name="no_registration_label" Content="Хотите продолжить без регистрации?" HorizontalAlignment="Left" Height="26" Margin="271,338,0,0" VerticalAlignment="Top" Width="236" Foreground="#FFB5B5B5" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseDown="no_registration_label_MouseDown"/>
+
+    </Grid>
+</Window>
